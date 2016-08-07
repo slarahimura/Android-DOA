@@ -1,0 +1,73 @@
+{
+  "project_info": {
+    "project_number": "392973802559",
+    "firebase_url": "https://deadoralive-e7208.firebaseio.com",
+    "project_id": "deadoralive-e7208",
+    "storage_bucket": "deadoralive-e7208.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:392973802559:android:d04c54e1bad0ccdb",
+        "android_client_info": {
+          "package_name": "lissapaluska.deadoralive"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "392973802559-5dura9cnbacd5or70ncjll0foamhr2e7.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDgk33wOAqmDcftqr0RugxhQ3h5M8exGq0"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:392973802559:android:29527acd6ead8202",
+        "android_client_info": {
+          "package_name": "alissapaluska.deadoralive"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "392973802559-5dura9cnbacd5or70ncjll0foamhr2e7.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDgk33wOAqmDcftqr0RugxhQ3h5M8exGq0"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
