@@ -1,25 +1,39 @@
 package alissapaluska.deadoralive.ui;
 
-import android.content.SharedPreferences;
-import android.os.Bundle;
-import android.preference.PreferenceManager;
+import android.app.ProgressDialog;
+import android.support.annotation.VisibleForTesting;
 import android.support.v7.app.AppCompatActivity;
 
-import alissapaluska.deadoralive.util.Constants;
+import alissapaluska.deadoralive.R;
 
 /**
  * Created by ali on 8/7/16.
  */
 public class BaseActivity extends AppCompatActivity {
-    public Firebase mFirebaseRef;
-    public SharedPreferences mSharedPreferences;
-    public SharedPreferences.Editor mSharedPreferencesEditor;
+
+    @VisibleForTesting
+    public ProgressDialog mProgressDialog;
+
+    public void showProgressDialog() {
+        if (mProgressDialog == null) {
+            mProgressDialog = new ProgressDialog(this);
+            mProgressDialog.setMessage(getString(R.string.loading));
+            mProgressDialog.setIndeterminate(true);
+        }
+
+        mProgressDialog.show();
+    }
+
+    public void hideProgressDialog() {
+        if (mProgressDialog != null && mProgressDialog.isShowing()) {
+            mProgressDialog.dismiss();
+        }
+    }
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        mSharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
-        mSharedPreferencesEditor = mSharedPreferences.edit();
-        mFirebaseRef = new Firebase(Constants.FIREBASE_URL);
+    public void onStop() {
+        super.onStop();
+        hideProgressDialog();
     }
+
 }
