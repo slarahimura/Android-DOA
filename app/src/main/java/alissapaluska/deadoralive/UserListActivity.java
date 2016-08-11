@@ -1,24 +1,23 @@
-package alissapaluska.deadoralive.ui;
+package alissapaluska.deadoralive;
 
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 
 import java.util.ArrayList;
 
-import alissapaluska.deadoralive.ContactsAdapter;
-import alissapaluska.deadoralive.R;
 import alissapaluska.deadoralive.model.Contact;
-import jp.wasabeef.recyclerview.animators.SlideInUpAnimator;
 
-public class MainActivity extends AppCompatActivity {
+/**
+ * Created by ali on 8/11/16.
+ */
+public class UserListActivity extends AppCompatActivity {
+
     ArrayList<Contact> contacts;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
-
         // ...
         // Lookup the recyclerview in activity layout
         RecyclerView rvContacts = (RecyclerView) findViewById(R.id.rvContacts);

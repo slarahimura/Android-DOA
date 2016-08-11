@@ -1,9 +1,11 @@
 package alissapaluska.deadoralive.ui;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -15,16 +17,20 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 
 import alissapaluska.deadoralive.R;
+import butterknife.BindView;
+import butterknife.ButterKnife;
 
-public class LoginActivity extends BaseActivity implements
-        View.OnClickListener {
+public class LoginActivity extends BaseActivity implements View.OnClickListener {
 
     private static final String TAG = "EmailPassword";
 
-    private TextView mStatusTextView;
-    private TextView mDetailTextView;
-    private EditText mEmailField;
-    private EditText mPasswordField;
+    @BindView(R.id.status) TextView mStatusTextView;
+    @BindView(R.id.detail) TextView mDetailTextView;
+    @BindView(R.id.field_email) EditText mEmailField;
+    @BindView(R.id.field_password) EditText mPasswordField;
+    @BindView(R.id.email_sign_in_button) Button mSignInButton;
+    @BindView(R.id.email_create_account_button) Button mCreateAccountButton;
+    @BindView(R.id.sign_out_button) Button mSignOutButton;
 
     // [START declare_auth]
     private FirebaseAuth mAuth;
@@ -38,17 +44,12 @@ public class LoginActivity extends BaseActivity implements
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
-
-        // Views
-        mStatusTextView = (TextView) findViewById(R.id.status);
-        mDetailTextView = (TextView) findViewById(R.id.detail);
-        mEmailField = (EditText) findViewById(R.id.field_email);
-        mPasswordField = (EditText) findViewById(R.id.field_password);
+        ButterKnife.bind(this);
 
         // Buttons
-        findViewById(R.id.email_sign_in_button).setOnClickListener(this);
-        findViewById(R.id.email_create_account_button).setOnClickListener(this);
-        findViewById(R.id.sign_out_button).setOnClickListener(this);
+        mSignInButton.setOnClickListener(this);
+        mCreateAccountButton.setOnClickListener(this);
+        mSignOutButton.setOnClickListener(this);
 
         // [START initialize_auth]
         mAuth = FirebaseAuth.getInstance();
@@ -206,12 +207,13 @@ public class LoginActivity extends BaseActivity implements
 
     @Override
     public void onClick(View v) {
-        int i = v.getId();
-        if (i == R.id.email_create_account_button) {
+        if (v == mCreateAccountButton) {
             createAccount(mEmailField.getText().toString(), mPasswordField.getText().toString());
-        } else if (i == R.id.email_sign_in_button) {
+        } else if (v == mSignInButton) {
             signIn(mEmailField.getText().toString(), mPasswordField.getText().toString());
-        } else if (i == R.id.sign_out_button) {
+            Intent intent = new Intent(LoginActivity.this, MainActivity.class);
+            startActivity(intent);
+        } else if (v == mSignOutButton) {
             signOut();
         }
     }
